@@ -1,4 +1,4 @@
-// 각종 변수
+// 전역변수 선언
 var sel = '';
 var sT1 = '';
 var eT1 = '';
@@ -122,88 +122,153 @@ if (address.indexOf("j2E=", 0) != -1) {
 
 if (address.indexOf("eT2=", 0) != -1) {
   eT2 = address.substring(address.indexOf("eT2=", 0) + 4);
-  //eT2 = eT2.substring(0, eT2.indexOf('&'));
 } else {
   eT2 = "";
 }
 // url에서 parameters 파싱 끝 ---------------
 
 function test1st() {
+  var x = document.getElementById("chgStyle");
   if (!eT1) {
     location.href = "type1/t1-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
-  } else {
+  } else if (!eT2) {
     notiMsg = "이미 완료하셨습니다. 'Step2. 분리도메인'을 진행해주세요.";
-    var x = document.getElementById("chgStyle");
     x.style.marginBottom = "10px";
     document.getElementById("notiMsg").innerHTML = notiMsg;
-    //alert("이미 완료하셨습니다.\n'Step2. 분리도메인'을 진행해주세요.");
+  } else {
+    notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
+    x.style.marginBottom = "10px";
+    document.getElementById("notiMsg").innerHTML = notiMsg;
   }
 }
 
 function test2nd() {
+  var x = document.getElementById("chgStyle");
   if (!eT1) {
     notiMsg = "'Step1. 통합도메인'을 먼저 완료해주세요.";
-    var x = document.getElementById("chgStyle");
     x.style.marginBottom = "10px";
     document.getElementById("notiMsg").innerHTML = notiMsg;
-    //alert("'Step1. 통합도메인'을 먼저 완료해주세요.");
-  } else location.href = "type2/t2-separate-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  } else if (!eT2) {
+    location.href = "type2/t2-separate-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  } else {
+    notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
+    x.style.marginBottom = "10px";
+    document.getElementById("notiMsg").innerHTML = notiMsg;
+  }
+}
+
+function goSurvey() {
+  var x = document.getElementById("chgStyle");
+  if (!eT1) {
+    notiMsg = "'Step1. 통합도메인'을 먼저 완료해주세요.";
+    x.style.marginBottom = "10px";
+    document.getElementById("notiMsg").innerHTML = notiMsg;
+  } else if (!eT2) {
+    notiMsg = "'Step2. 분리도메인'을 먼저 완료해주세요.";
+    x.style.marginBottom = "10px";
+    document.getElementById("notiMsg").innerHTML = notiMsg;
+  } else {
+    alert("설문조사가기");
+  }
 }
 
 // 레이어 관련 스크립트
-function layerPop(){
-    //var $href = '#layerPop';
-    //layer_popup($href);
-    layer_popup('#layerPop');
+function layerPop() {
+  layer_popup('#layerPop');
 }
-function layer_popup(el){
+function layer_popup(el) {
 
-    var $el = $(el);        //레이어의 id를 $el 변수에 저장
-    //var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+  var $el = $(el); //레이어의 id를 $el 변수에 저장
+  //var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
 
-    $('.dim-layer').fadeIn();
-    //isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+  $('.dim-layer').fadeIn();
+  //isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
 
-    var $elWidth = ~~($el.outerWidth()),
-        $elHeight = ~~($el.outerHeight()),
-        docWidth = $(document).width(),
-        docHeight = $(document).height();
+  var $elWidth = ~~($el.outerWidth()),
+    $elHeight = ~~($el.outerHeight()),
+    docWidth = $(document).width(),
+    docHeight = $(document).height();
 
-    // 화면의 중앙에 레이어를 띄운다.
-    if ($elHeight < docHeight || $elWidth < docWidth) {
-        $el.css({
-            marginTop: -$elHeight /2,
-            marginLeft: -$elWidth/2
-        });
-    } else {
-        $el.css({top: 0, left: 0});
-    }
-
-    $el.find('a.btn-layerClose').click(function(){
-        $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-        location.href = "../main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
-        //isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-        return false;
+  // 화면의 중앙에 레이어를 띄운다.
+  if ($elHeight < docHeight || $elWidth < docWidth) {
+    $el.css({
+      marginTop: -$elHeight / 2,
+      marginLeft: -$elWidth / 2
     });
-
-    $el.find('a.btn-layerClose2').click(function(){
-        $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-        history.back();
-        //isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-        return false;
+  } else {
+    $el.css({
+      top: 0,
+      left: 0
     });
+  }
 
-    $('.layer .dimBg').click(function(){
-        $('.dim-layer').fadeOut();
-        return false;
+  $el.find('a.btn-layerClose').click(function() {
+    $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+    location.href = "../main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    return false;
+  });
+
+  $el.find('a.btn-layerClose2').click(function() {
+    $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+    history.back();
+    return false;
+  });
+
+  $el.find('a.btn-layerClose3').click(function() {
+    $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+    return false;
+  });
+
+  $el.find('a.btn-layerClose4').click(function() {
+    $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+    location.href = "t2-separate-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    return false;
+  });
+
+  $('.layer .dimBg').click(function() {
+    $('.dim-layer').fadeOut();
+    return false;
+  });
+
+}
+
+function layerPop2() {
+  layer_popup2('#layerPop2');
+}
+function layer_popup2(el) {
+
+  var $el = $(el); //레이어의 id를 $el 변수에 저장
+  //var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+  $('.dim-layer2').fadeIn();
+  //isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+  var $elWidth = ~~($el.outerWidth()),
+    $elHeight = ~~($el.outerHeight()),
+    docWidth = $(document).width(),
+    docHeight = $(document).height();
+
+  // 화면의 중앙에 레이어를 띄운다.
+  if ($elHeight < docHeight || $elWidth < docWidth) {
+    $el.css({
+      marginTop: -$elHeight / 2,
+      marginLeft: -$elWidth / 2
     });
+  } else {
+    $el.css({
+      top: 0,
+      left: 0
+    });
+  }
+
+  $el.find('a.btn-layerClose').click(function() {
+    $('.dim-layer2').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+    return false;
+  });
+
+  $('.layer .dimBg').click(function() {
+    $('.dim-layer2').fadeOut();
+    return false;
+  });
 
 } // 레이어 관련 스크립트 끝
-
-function join2Etc() {
-  j2E = 1;
-}
-
-function join2Common() {
-  j2C = 1;
-}

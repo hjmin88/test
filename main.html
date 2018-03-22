@@ -4,8 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>진학사 원서접수 유저테스트</title>
-	<script src="https://hjmin88.github.io/test/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="https://hjmin88.github.io/test/control.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="control.js"></script>
 	<style type="text/css">
 		body {
 			margin-left: 0px;
@@ -30,14 +30,12 @@
 <body onload="memChk();">
 	<div id="center" style="font-size:50px; font-weight:bold; font-family:'돋움';" align="center">
 		<p id="chgStyle">진학사 원서접수<br/><span style="font-size:40px;">_사이트 유저테스트</span>
-			<!-- style="margin-bottom:10px;" -->
 			<br /><span style="font-size:20px;">UserType : </span><span style="font-size:30px; color:blue;" id="memType"></span></p>
-		<!-- <p><a href="type1/t1-main.html" target="_blank">1안) 통합도메인</a></p> -->
-		<!-- <p><a href="type2/t2-separate-main.html" target="_blank">2안) 분리도메인</a></p> -->
 		<p style="margin-top:10px; margin-bottom:20px;"><span style="font-size:20px; color:red;" id="notiMsg"></span></p>
 		<p style="margin-top:20px; margin-bottom:20px;"><input type="button" onclick="test1st();" value="Step1. 통합도메인" / style="width:400px; height:80px; font-size:30px;"></p>
 		<p style="margin-top:20px; margin-bottom:20px;"><input type="button" onclick="test2nd();" value="Step2. 분리도메인" / style="width:400px; height:80px; font-size:30px;"></p>
-		<p style="margin-top:20px; margin-bottom:20px;"><a href="#" target="_blank">설문조사</p>
-</div>
+		<p style="margin-top:20px; margin-bottom:20px;"><input type="button" onclick="goSurvey();" value="Step3. 설문조사   " / style="width:400px; height:80px; font-size:30px;"></p>
+	</div>
 </body>
+
 </html>

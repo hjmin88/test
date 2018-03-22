@@ -3,9 +3,9 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>통합도메인(1안)</title>
-	<script src="https://hjmin88.github.io/test/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="https://hjmin88.github.io/test/control.js"></script>
+	<title>Step1. 통합도메인</title>
+	<script src="../jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../control.js"></script>
 	<style type="text/css">
 		body {
 			margin-top: -51px;
@@ -78,7 +78,7 @@
 			display: block;
 		}
 
-		a.btn-layerClose {
+		a.btn-layerClose2 {
 			display: inline-block;
 			height: 25px;
 			padding: 0 14px 0;
@@ -89,7 +89,7 @@
 			line-height: 25px;
 		}
 
-		a.btn-layerClose:hover {
+		a.btn-layerClose2:hover {
 			border: 1px solid #091940;
 			background-color: #1f326a;
 			color: #fff;
@@ -111,8 +111,11 @@
 			<div class="pop-container">
 				<div class="pop-conts">
 					<!--content //-->
-					<p class="ctxt mb20"><span style="font-size:15px; font-weight:bold;">테스트 안내</span><br /> 공통원서 유형으로 로그인 하셨습니다.<br /> 선택하신 접수유형은 <span style="font-weight:bold; color:blue;">일반원서</span>입니다.<br /> 아래 <span style="font-weight:bold; color:blue;">[확인]</span> 버튼을 클릭하시고 일반원서
-						유형으로 다시 로그인하세요.
+					<p class="ctxt mb20"><span style="font-size:15px; font-weight:bold;">테스트 안내</span>
+						<br />선택하신 <span style="font-weight:bold; color:blue;" id="memType"></span> 접수는
+						<span style="font-weight:bold; color:blue;">일반원서</span>에서 지원해야 합니다.
+						<br />아래 <span style="font-weight:bold; color:blue;">[확인]</span> 버튼을 클릭하시고
+						<br />일반원서 유형으로 다시 로그인하세요.
 					</p>
 
 					<div class="btn-r">
@@ -127,6 +130,7 @@
 
 	<script>
 		function chkPath() {
+			memChk();
 			if ((6 <= Number(sel)) && (Number(sel) <= 15)) {
 				layerPop();
 			} else return false;

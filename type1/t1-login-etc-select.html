@@ -3,9 +3,9 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>통합도메인(1안)</title>
-	<script src="https://hjmin88.github.io/test/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="https://hjmin88.github.io/test/control.js"></script>
+	<title>Step1. 통합도메인</title>
+	<script src="../jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../control.js"></script>
 	<style type="text/css">
 		body {
 			margin-top: -51px;
@@ -78,6 +78,32 @@
 			display: block;
 		}
 
+		.dim-layer2 {
+			display: none;
+			position: fixed;
+			_position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 100;
+		}
+
+		.dim-layer2 .dimBg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #000;
+			opacity: .5;
+			filter: alpha(opacity=50);
+		}
+
+		.dim-layer2 .pop-layer {
+			display: block;
+		}
+
 		a.btn-layerClose {
 			display: inline-block;
 			height: 25px;
@@ -106,6 +132,7 @@
 	<area shape="rect" coords="1003,115,1053,137" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
 	<area shape="rect" coords="298,431,566,491" onclick="htmlMove4()" /> <!-- 공통로그인 -->
 	<area shape="rect" coords="540,640,620,714" onclick="htmlMove5()" /> <!-- 일반로그인 /로그인2 -->
+	<area shape="rect" coords="343,606,395,629" onclick="htmlMove6()" /> <!-- 일반회원가입 -->
 </map>
 
 	<!-- 다음단계 레이어 팝업 -->
@@ -115,11 +142,33 @@
 			<div class="pop-container">
 				<div class="pop-conts">
 					<!--content //-->
-					<p class="ctxt mb20"><span style="font-size:15px; font-weight:bold;">테스트 완료!</span><br> 'Step1. 통합도메인' 테스트를 완료하였습니다.<br> 아래 <span style="font-weight:bold; color:blue;">[다음]</span> 버튼을 클릭하시고 'Step2' 테스트를 진행하세요.<br><br> 테스트를 진행해주셔서 감사합니다!
+					<p class="ctxt mb20"><span style="font-size:15px; font-weight:bold;">테스트 완료!</span>
+						<br />'Step1. 통합도메인' 테스트를 완료하였습니다.
+						<br />아래 <span style="font-weight:bold; color:blue;">[다음]</span> 버튼을 클릭하시고
+						<br /><span style="font-weight:bold; color:blue;">'Step2. 분리도메인'</span> 테스트를 진행하세요.<br /><br /> 테스트를 진행해주셔서 감사합니다!
 					</p>
 
 					<div class="btn-r">
 						<a href="#" class="btn-layerClose">다음</a>
+					</div>
+					<!--// content-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dim-layer2">
+		<div class="dimBg"></div>
+		<div id="layerPop2" class="pop-layer">
+			<div class="pop-container">
+				<div class="pop-conts">
+					<!--content //-->
+					<p class="ctxt mb20"><span style="font-size:15px; font-weight:bold;">테스트 안내</span>
+						<br /> 먼저 일반원서접수 회원가입을 해주세요.
+					</p>
+
+					<div class="btn-r">
+						<a href="#" class="btn-layerClose">확인</a>
 					</div>
 					<!--// content-->
 				</div>
@@ -155,7 +204,11 @@
 						layerPop();
 					}
 				} else location.href = "t1-login-etc-complete.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
-			} else alert("먼저 일반원서접수 회원가입을 해주세요.");
+			} else layerPop2();
+		}
+
+		function htmlMove6() {
+			location.href = "t1-join-etc-agree.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}
 	</script>
 

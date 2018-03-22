@@ -1,102 +1,91 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>진학사 원서접수 유저테스트</title>
-<script src="https://hjmin88.github.io/test/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://hjmin88.github.io/test/control.js"></script>
-<style type="text/css">
-body {margin-left:0px; margin-top:0px; margin-right:0px; margin-bottom:0px;}
-#center {position:absolute; top:45%; left:50%; width:900px; height:500px; overflow:hidden; margin-top:-270px; margin-left:-450px;}
-</style>
-</head>
-<body>
-<div id="center" align="center">
-	<p style="font-size:40px; font-weight:bold; font-family:'돋움';">어떤 유형에 지원하시나요?<br/><span style="font-size:35px;">아래에서 선택해주세요.</span></p>
-	<p style="font-size:10px;">
-	<div class="table">
-	<table border="1">
-		<colgroup>
-			<col width="20%" />
-			<col width="20%" />
-			<col width="20%" />
-			<col width="20%" />
-			<col width="20%" />
-		</colgroup>
-		<tr align="center" style="height:50px;">
-			<td>수시<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType1" name="selType" value="1" /></td>
-			<td>재외국민<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType2" name="selType" value="2" /></td>
-			<td>정시<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType3" name="selType" value="3" /></td>
-			<td>추가모집<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType4" name="selType" value="4" /></td>
-			<td>폴리텍<br/>(다기능기술자)<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType5" name="selType" value="5" /></td>
-		</tr>
-		<tr align="center" style="height:50px;">
-			<td>편입학<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType6" name="selType" value="6" /></td>
-			<td>대학원<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType7" name="selType" value="7" /></td>
-			<td>경찰대<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType8" name="selType" value="8" /></td>
-			<td>한예종<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType9" name="selType" value="9" /></td>
-			<td>DGIST<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType10" name="selType" value="10" /></td>
-		</tr>
-		<tr align="center" style="height:50px;">
-			<td>학위취득<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType11" name="selType" value="11" /></td>
-			<td>외국인전형<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType12" name="selType" value="12" /></td>
-			<td>초/중/고교<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType13" name="selType" value="13" /></td>
-			<td>폴리텍(전문기술,<br/>기능장,학위전공심화)<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType14" name="selType" value="14" /></td>
-			<td>기타<br/>
-			<input type="radio" style="width:15px; height:15px; border:1px;" id="selType15" name="selType" value="15" /></td>
-		</tr>
-	</table>
-	</div>
-	<!--
-		"수시", // 0
-	  "재외국민", // 1
-	  "정시", // 2
-	  "추가모집", // 3
-	  "폴리텍<br/>(다기능기술자)", // 4
-	  "편입학", // 5
-	  "대학원", // 6
-	  "경찰대", // 7
-	  "한예종", // 8
-	  "DGIST", // 9
-	  "학위취득", // 10
-	  "외국인전형", // 11
-	  "초/중/고교", // 12
-	  "폴리텍<br/>(전문기술,기능장,학위전공심화)", // 13
-	  "기타" // 14
-	-->
-	<!-- <script type="text/javascript" src="control.js">
-	// selType 배열값 0~4:common, 5~14:etc 로 파라미터 전달
-	/*
-	document.write(randomItem(selType), '<br />');
-	document.write(randomItem(selType), '<br />');
-	document.write(randomItem(selType), '<br />');
 
-	function randomItem(a) {
-	  return a[Math.floor(Math.random() * a.length)];
-	}
-	*/
-	</script> -->
-	</p>
-	<p>
-		<form>
-			<input type="button" id="start" value="다음" style="margin-top:20px; font-size:35px; font-weight:bold; font-family:'돋움'; width:100px; height:60px;" onClick="moveIndex()">
-			<!-- <input type="button" id="start" value="다음" style="margin-top:20px; font-size:35px; font-weight:bold; font-family:'돋움'; width:100px; height:60px;" onClick="location.href='main.html'"> -->
-		</form>
-	</p>
-</div>
+<head>
+	<meta charset="utf-8">
+	<title>진학사 원서접수 유저테스트</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="control.js"></script>
+	<style type="text/css">
+		body {
+			margin-left: 0px;
+			margin-top: 0px;
+			margin-right: 0px;
+			margin-bottom: 0px;
+		}
+
+		#center {
+			position: absolute;
+			top: 45%;
+			left: 50%;
+			width: 900px;
+			height: 500px;
+			overflow: hidden;
+			margin-top: -270px;
+			margin-left: -450px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="center" align="center">
+		<p style="font-size:40px; font-weight:bold; font-family:'돋움';">어떤 유형에 지원하시나요?<br/><span style="font-size:35px;">아래에서 선택해주세요.</span></p>
+		<p style="font-size:10px;">
+			<div class="table">
+				<table border="1">
+					<colgroup>
+						<col width="20%" />
+						<col width="20%" />
+						<col width="20%" />
+						<col width="20%" />
+						<col width="20%" />
+					</colgroup>
+					<tr align="center" style="height:50px;">
+						<td>수시<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType1" name="selType" value="1" /></td>
+						<td>재외국민<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType2" name="selType" value="2" /></td>
+						<td>정시<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType3" name="selType" value="3" /></td>
+						<td>추가모집<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType4" name="selType" value="4" /></td>
+						<td>폴리텍<br/>(다기능기술자)<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType5" name="selType" value="5" /></td>
+					</tr>
+					<tr align="center" style="height:50px;">
+						<td>편입학<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType6" name="selType" value="6" /></td>
+						<td>대학원<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType7" name="selType" value="7" /></td>
+						<td>경찰대<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType8" name="selType" value="8" /></td>
+						<td>한예종<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType9" name="selType" value="9" /></td>
+						<td>DGIST<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType10" name="selType" value="10" /></td>
+					</tr>
+					<tr align="center" style="height:50px;">
+						<td>학위취득<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType11" name="selType" value="11" /></td>
+						<td>외국인전형<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType12" name="selType" value="12" /></td>
+						<td>초/중/고교<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType13" name="selType" value="13" /></td>
+						<td>폴리텍(전문기술,<br/>기능장,학위전공심화)<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType14" name="selType" value="14" /></td>
+						<td>기타<br/>
+							<input type="radio" style="width:15px; height:15px; border:1px;" id="selType15" name="selType" value="15" /></td>
+					</tr>
+				</table>
+			</div>
+
+		</p>
+		<p>
+			<form>
+				<input type="button" id="start" value="다음" style="margin-top:20px; font-size:35px; font-weight:bold; font-family:'돋움'; width:100px; height:60px;" onClick="moveIndex()">
+			</form>
+		</p>
+	</div>
 </body>
+
 </html>

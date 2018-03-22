@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>통합도메인(2안)</title>
-<style type="text/css">
-body{margin-top:-51px;}
-.crop{float:left; overflow:hidden;}
-.crop img{margin:0px 0px -36px 0px;}
-</style>
-</head>
-<body>
-<p class="crop"><img src="etc/t2-etc-join-agree.png" usemap="#link" /></p>
 
-<map name="link">
-	<area shape="rect" coords="177,115,370,137" href="t2-etc-main.html"> <!-- 서브 BI -->
-	<area shape="rect" coords="954,115,995,137" href="t2-etc-login.html"> <!-- 서브 상단 로그인 -->
-	<area shape="rect" coords="1003,115,1053,137" href="t2-etc-join-agree.html"> <!-- 서브 상단 회원가입 -->
-	<area shape="rect" coords="287,823,635,914" href="t2-etc-main.html"> <!-- 하단 동의안함 -->
-	<area shape="rect" coords="644,823,991,914" href="t2-etc-join-input.html"> <!-- 하단 동의 -->
+<head>
+	<meta charset="utf-8">
+	<title>Step2. 분리도메인</title>
+	<script src="../jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../control.js"></script>
+	<style type="text/css">
+		body {
+			margin-top: -51px;
+		}
+
+		.crop {
+			float: left;
+			overflow: hidden;
+		}
+
+		.crop img {
+			margin: 0px 0px -36px 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="crop"><img src="etc/t2-etc-join-agree.png" usemap="#link" /></p>
+
+	<map name="link">
+	<area shape="rect" coords="177,115,370,137" onclick="htmlMove1()" /> <!-- 서브 BI -->
+	<area shape="rect" coords="954,115,995,137" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
+	<area shape="rect" coords="1003,115,1053,137" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
+	<area shape="rect" coords="287,823,635,914" onclick="htmlMove4()" /> <!-- 하단 동의안함 -->
+	<area shape="rect" coords="644,823,991,914" onclick="htmlMove5()" /> <!-- 하단 동의 -->
 </map>
+	<script>
+		function htmlMove1() {
+			location.href = "t2-etc-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+		}
+
+		function htmlMove2() {
+			location.href = "t2-etc-login.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+		}
+
+		function htmlMove3() {
+			location.href = "t2-etc-join-agree.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+		}
+
+		function htmlMove4() {
+			location.href = "t2-etc-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+		}
+
+		function htmlMove5() {
+			location.href = "t2-etc-join-input.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+		}
+	</script>
 </body>
+
 </html>
