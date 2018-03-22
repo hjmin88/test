@@ -122,7 +122,7 @@ if (address.indexOf("j2E=", 0) != -1) {
 
 if (address.indexOf("eT2=", 0) != -1) {
   eT2 = address.substring(address.indexOf("eT2=", 0) + 4);
-  eT2 = eT2.substring(0, eT2.indexOf('&'));
+  //eT2 = eT2.substring(0, eT2.indexOf('&'));
 } else {
   eT2 = "";
 }
@@ -152,8 +152,9 @@ function test2nd() {
 
 // 레이어 관련 스크립트
 function layerPop(){
-    var $href = '#layerPop';
-    layer_popup($href);
+    //var $href = '#layerPop';
+    //layer_popup($href);
+    layer_popup('#layerPop');
 }
 function layer_popup(el){
 
