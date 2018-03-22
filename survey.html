@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>Step3. 설문조사</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="control.js"></script>
+	<style type="text/css">
+		body {
+			margin-left: 0px;
+			margin-top: 0px;
+			margin-right: 0px;
+			margin-bottom: 0px;
+		}
+
+		#center {
+			position: absolute;
+			left: 50%;
+			width: 700px;
+			margin-top: 10px;
+			margin-left: -350px;
+		}
+
+		textarea.area {
+			width: 400px;
+			height: 55px;
+			resize: none;
+		}
+	</style>
+</head>
+
+<body onload="memChk();" id="center">
+	<form>
+	<div>
+		<table border="1" cellpadding="10px">
+				<td>
+		<p>
+			<strong>진학사 원서접수 유저테스트 설문조사</strong>
+		</p>
+		<p>
+			[기본정보]
+			<br /> 접수구분 : <span id="memType"></span>
+			<br /> 접수유형 : <span id="siteType"></span>
+		</p>
+		<p>
+			[테스트결과]
+			<br /> Step1 소요시간 : <span id="t1Time"></span>
+			<br /> Step2 소요시간 : <span id="t2Time"></span>
+		</p>
+		<p>[설문조사]</p>
+		<p>
+			<strong>1. Step1과 Step2 중 어느 것에서 가입 후 로그인까지 과정이 더 수월했습니까?</strong><br /><br />
+			<label><input type="radio" id="svQ11" name="svQ1" value="1" required /> Step1 - 통합사이트</label><br />
+			<label><input type="radio" id="svQ12" name="svQ1" value="2" /> Step2 - 분리사이트</label><br />
+			<label><input type="radio" id="svQ13" name="svQ1" value="0" /> 비슷비슷하다(잘 모르겠다)</label>
+		</p>
+		<p>
+			<strong>2. 위와 같이 응답한 이유는 무엇입니까? (주관식)</strong><br /><br />
+			<textarea type="text" id="svQ21" class="area" name="svQ2" maxlength="300" placeholder="이 곳에 작성해주세요." required></textarea>
+		</p>
+		<p>
+			<strong>3. 귀하의 성별은?</strong><br /><br />
+			<label><input type="radio" id="svQ31" name="svQ3" value="1" required /> 남자</label><br />
+			<label><input type="radio" id="svQ32" name="svQ3" value="2" /> 여자</label>
+		</p>
+		<p>
+			<strong>4. 귀하의 연령대는?</strong><br /><br />
+			<label><input type="radio" id="svQ41" name="svQ4" value="1" required /> 10대 이하</label><br />
+			<label><input type="radio" id="svQ42" name="svQ4" value="2" /> 20대</label><br />
+			<label><input type="radio" id="svQ43" name="svQ4" value="3" /> 30대</label><br />
+			<label><input type="radio" id="svQ44" name="svQ4" value="4" /> 40대</label><br />
+			<label><input type="radio" id="svQ45" name="svQ4" value="5" /> 50대</label><br />
+			<label><input type="radio" id="svQ46" name="svQ4" value="6" /> 60대 이상</label>
+		</p>
+		<p>
+			<input type="submit" value="제출하기" style="width:100px; height:40px; font-size:20px; font-weight:bold; color:blue;" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 테스트에 참여해주셔서 대단히 감사합니다.
+		</p>
+	</div>
+	</td>
+	</table>
+	</form>
+
+	<script>
+		$(document).ready(function() {
+			document.getElementById("t1Time").innerHTML = t1Time;
+			document.getElementById("t2Time").innerHTML = t2Time;
+		});
+
+		var t1Time;
+		var t2Time;
+		var c1ST1;
+		var c1ET1;
+		var c1ST2;
+		var c1ET2;
+		var c2ST1;
+		var c2ET1;
+		var c2ST2;
+		var c2ET2;
+
+		// t1Time 계산
+		c1ST1 = "2018" + sT1.split('-')[0] + sT1.split('-')[1];
+		c1ET1 = "2018" + eT1.split('-')[0] + eT1.split('-')[1];
+		c2ST1 = new Date(parseInt(c1ST1.substring(0, 4), 10),
+			parseInt(c1ST1.substring(4, 6), 10) - 1,
+			parseInt(c1ST1.substring(6, 8), 10),
+			parseInt(c1ST1.substring(8, 10), 10),
+			parseInt(c1ST1.substring(10, 12), 10),
+			parseInt(c1ST1.substring(12, 14), 10)
+		);
+		c2ET1 = new Date(parseInt(c1ET1.substring(0, 4), 10),
+			parseInt(c1ET1.substring(4, 6), 10) - 1,
+			parseInt(c1ET1.substring(6, 8), 10),
+			parseInt(c1ET1.substring(8, 10), 10),
+			parseInt(c1ET1.substring(10, 12), 10),
+			parseInt(c1ET1.substring(12, 14), 10)
+		);
+
+		var dateGapT1;
+		var timeGapT1;
+		var diffDayT1;
+		var diffHourT1;
+		var diffMinT1;
+		var diffSecT1;
+
+		dateGapT1 = c2ET1.getTime() - c2ST1.getTime();
+		timeGapT1 = new Date(0, 0, 0, 0, 0, 0, c2ET1 - c2ST1);
+
+		diffDayT1 = Math.floor(dateGapT1 / (1000 * 60 * 60 * 24)); // 일수
+		diffHourT1 = timeGapT1.getHours(); // 시간
+		diffMinT1 = timeGapT1.getMinutes(); // 분
+		diffSecT1 = timeGapT1.getSeconds(); // 초
+
+		if (diffDayT1 > 0) {
+			t1Time = diffDayT1 + "일 " + diffHourT1 + "시간 " + diffMinT1 + "분 " + diffSecT1 + "초 ";
+		} else if (diffHourT1 > 0) {
+			t1Time = diffHourT1 + "시간 " + diffMinT1 + "분 " + diffSecT1 + "초 ";
+		} else if (diffMinT1 > 0) {
+			t1Time = diffMinT1 + "분 " + diffSecT1 + "초 ";
+		} else if (diffSecT1 > 0) {
+			t1Time = diffSecT1 + "초 ";
+		} else t1Time = "에러";
+		// t1Time 계산 끝
+
+		// t2Time 계산
+		c1ST2 = "2018" + sT2.split('-')[0] + sT2.split('-')[1];
+		c1ET2 = "2018" + eT2.split('-')[0] + eT2.split('-')[1];
+		c2ST2 = new Date(parseInt(c1ST2.substring(0, 4), 10),
+			parseInt(c1ST2.substring(4, 6), 10) - 1,
+			parseInt(c1ST2.substring(6, 8), 10),
+			parseInt(c1ST2.substring(8, 10), 10),
+			parseInt(c1ST2.substring(10, 12), 10),
+			parseInt(c1ST2.substring(12, 14), 10)
+		);
+		c2ET2 = new Date(parseInt(c1ET2.substring(0, 4), 10),
+			parseInt(c1ET2.substring(4, 6), 10) - 1,
+			parseInt(c1ET2.substring(6, 8), 10),
+			parseInt(c1ET2.substring(8, 10), 10),
+			parseInt(c1ET2.substring(10, 12), 10),
+			parseInt(c1ET2.substring(12, 14), 10)
+		);
+
+		var dateGapT2;
+		var timeGapT2;
+		var diffDayT2;
+		var diffHourT2;
+		var diffMinT2;
+		var diffSecT2;
+
+		dateGapT2 = c2ET2.getTime() - c2ST2.getTime();
+		timeGapT2 = new Date(0, 0, 0, 0, 0, 0, c2ET2 - c2ST2);
+
+		diffDayT2 = Math.floor(dateGapT2 / (1000 * 60 * 60 * 24)); // 일수
+		diffHourT2 = timeGapT2.getHours(); // 시간
+		diffMinT2 = timeGapT2.getMinutes(); // 분
+		diffSecT2 = timeGapT2.getSeconds(); // 초
+
+		if (diffDayT2 > 0) {
+			t2Time = diffDayT2 + "일 " + diffHourT2 + "시간 " + diffMinT2 + "분 " + diffSecT2 + "초 ";
+		} else if (diffHourT2 > 0) {
+			t2Time = diffHourT2 + "시간 " + diffMinT2 + "분 " + diffSecT2 + "초 ";
+		} else if (diffMinT2 > 0) {
+			t2Time = diffMinT2 + "분 " + diffSecT2 + "초 ";
+		} else if (diffSecT2 > 0) {
+			t2Time = diffSecT2 + "초 ";
+		} else t2Time = "에러";
+	</script>
+</body>
+
+</html>

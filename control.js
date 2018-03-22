@@ -13,6 +13,7 @@ var j2E = '';
 var j2C = '';
 
 var msg = '';
+var msg2 = '';
 var notiMsg = '';
 
 // 함수
@@ -53,6 +54,11 @@ function memChk() {
     msg = "기타";
   } else msg = "ERROR";
   document.getElementById("memType").innerHTML = msg;
+
+  if ((1 <= Number(sel)) && (Number(sel) <= 5)) {
+    msg2 = "공통원서";
+  } else msg2 = "일반원서";
+  document.getElementById("siteType").innerHTML = msg2;
 }
 
 // url get방식 parameters 출력
@@ -167,9 +173,7 @@ function goSurvey() {
     notiMsg = "'Step2. 분리도메인'을 먼저 완료해주세요.";
     x.style.marginBottom = "10px";
     document.getElementById("notiMsg").innerHTML = notiMsg;
-  } else {
-    alert("설문조사가기");
-  }
+  } else location.href = "survey.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 }
 
 // 레이어 관련 스크립트
