@@ -55,16 +55,25 @@ function memChk() {
   } else msg = "ERROR";
   document.getElementById("memType").innerHTML = msg;
 
-  if ((1 <= Number(sel)) && (Number(sel) <= 5)) {
-    msg2 = "공통원서";
-  } else msg2 = "일반원서";
-  document.getElementById("siteType").innerHTML = msg2;
+  if (eT2 != "") {
+    if ((1 <= Number(sel)) && (Number(sel) <= 5)) {
+      msg2 = "공통원서";
+    } else {
+      msg2 = "일반원서";
+    }
+    document.getElementById("siteType").innerHTML = msg2;
+  } else return false;
 }
 
 // url get방식 parameters 출력
 function moveIndex() {
-  var sel = $("input[name=selType]:checked").val();
-  location.href = "main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  var f = document.getElementsByTagName('form')[0];
+  if (f.checkValidity()) {
+    var sel = $("input[name=selType]:checked").val();
+    location.href = "main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  } else {
+    layerPop2();
+  }
 }
 
 // url에서 parameters 파싱 ---------------
@@ -180,6 +189,7 @@ function goSurvey() {
 function layerPop() {
   layer_popup('#layerPop');
 }
+
 function layer_popup(el) {
 
   var $el = $(el); //레이어의 id를 $el 변수에 저장
@@ -239,6 +249,7 @@ function layer_popup(el) {
 function layerPop2() {
   layer_popup2('#layerPop2');
 }
+
 function layer_popup2(el) {
 
   var $el = $(el); //레이어의 id를 $el 변수에 저장
