@@ -23,15 +23,15 @@
 </head>
 
 <body>
-	<p class="crop"><img src="etc/t2-etc-main.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="etc/t2-etc-main.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="158,109,473,148" onclick="htmlMove1()" /> <!-- t2 일반 메인 상단 BI -->
-	<area shape="rect" coords="1040,100,1094,151" onclick="htmlMove2()" /> <!-- t2 일반 메인 원서검색(검색창) -->
-	<area shape="rect" coords="256,201,368,260" onclick="htmlMove3()" /> <!-- t2 일반 메인 원서검색(메뉴) -->
-	<area shape="rect" coords="870,295,941,320" onclick="htmlMove4()" /> <!-- t2 일반 메인 회원가입 -->
-	<area shape="rect" coords="1026,329,1102,390" onclick="htmlMove5()" /> <!-- t2 일반 메인 로그인 -->
-	<area shape="rect" coords="143,447,848,552" onclick="htmlMove6()" /> <!-- t2 일반 메인 공통원서 바로가기 -->
+	<area shape="rect" coords="158,109,473,148" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- t2 일반 메인 상단 BI -->
+	<area shape="rect" coords="1040,100,1094,151" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- t2 일반 메인 원서검색(검색창) -->
+	<area shape="rect" coords="256,201,368,260" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- t2 일반 메인 원서검색(메뉴) -->
+	<area shape="rect" coords="870,295,941,320" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- t2 일반 메인 회원가입 -->
+	<area shape="rect" coords="1026,329,1102,390" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- t2 일반 메인 로그인 -->
+	<area shape="rect" coords="143,447,848,552" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove6()" /> <!-- t2 일반 메인 공통원서 바로가기 -->
 </map>
 	<script>
 		function htmlMove1() {

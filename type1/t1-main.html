@@ -19,15 +19,16 @@
 		.crop img {
 			margin: 0px 0px -36px 0px;
 		}
+
 	</style>
 </head>
 
 <body onload="chk_sT1();">
-	<p class="crop"><img src="t1-main.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="t1-main.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="777,115,819,137" onclick="htmlMove1()" /> <!-- 메인 로그인 -->
-	<area shape="rect" coords="826,115,876,137" onclick="htmlMove2()" /> <!-- 메인 회원가입 -->
+	<area shape="rect" coords="777,115,819,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 메인 로그인 -->
+	<area shape="rect" coords="826,115,876,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 메인 회원가입 -->
 </map>
 	<script>
 		function chk_sT1() {

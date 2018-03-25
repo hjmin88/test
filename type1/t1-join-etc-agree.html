@@ -23,14 +23,14 @@
 </head>
 
 <body>
-	<p class="crop"><img src="join/t1-join-etc-agree.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="join/t1-join-etc-agree.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="177,115,370,137" onclick="htmlMove1()" /> <!-- 서브 BI -->
-	<area shape="rect" coords="954,115,995,137" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
-	<area shape="rect" coords="1003,115,1053,137" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
-	<area shape="rect" coords="287,823,635,914" onclick="htmlMove4()" /> <!-- 하단 동의안함 -->
-	<area shape="rect" coords="644,823,991,914" onclick="htmlMove5()" /> <!-- 하단 동의 -->
+	<area shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
+	<area shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
+	<area shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
+	<area shape="rect" coords="287,823,635,914" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 하단 동의안함 -->
+	<area shape="rect" coords="644,823,991,914" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 하단 동의 -->
 </map>
 
 	<script>

@@ -23,11 +23,11 @@
 </head>
 
 <body>
-	<p class="crop"><img src="common/t2-common-main.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="common/t2-common-main.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="777,115,819,137" onclick="htmlMove1()" /> <!-- 메인 로그인 -->
-	<area shape="rect" coords="826,115,876,137" onclick="htmlMove2()" /> <!-- 메인 회원가입 -->
+	<area shape="rect" coords="777,115,819,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 메인 로그인 -->
+	<area shape="rect" coords="826,115,876,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 메인 회원가입 -->
 </map>
 	<script>
 		function htmlMove1() {

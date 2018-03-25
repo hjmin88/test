@@ -98,11 +98,11 @@
 </head>
 
 <body onload=chkPath();>
-	<p class="crop"><img src="etc/t2-etc-login-complete.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="etc/t2-etc-login-complete.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="1034,293,1095,314" onclick="htmlMove1()" /> <!-- t2 일반 메인 로그아웃 -->
-	<area shape="rect" coords="143,447,848,552" onclick="htmlMove2()" /> <!-- t2 일반 메인 공통원서 바로가기 -->
+	<area shape="rect" coords="1034,293,1095,314" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- t2 일반 메인 로그아웃 -->
+	<area shape="rect" coords="143,447,848,552" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- t2 일반 메인 공통원서 바로가기 -->
 </map>
 
 	<!-- 경로안내 레이어 팝업 -->

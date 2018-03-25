@@ -23,14 +23,14 @@
 </head>
 
 <body>
-	<p class="crop"><img src="common/t2-common-join-separate.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="common/t2-common-join-separate.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="177,115,370,137" onclick="htmlMove1()" /> <!-- 서브 BI -->
-	<area shape="rect" coords="954,115,995,137" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
-	<area shape="rect" coords="1003,115,1053,137" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
-	<area shape="circle" coords="350,566,115" onclick="htmlMove4()" /> <!-- 공통가입 분기 진학가입 -->
-	<area shape="circle" coords="640,560,140" onclick="htmlMove5()" /> <!-- 공통가입 분기 통합가입 -->
+	<area shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
+	<area shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
+	<area shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
+	<area shape="circle" coords="350,566,115" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 공통가입 분기 진학가입 -->
+	<area shape="circle" coords="640,560,140" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 공통가입 분기 통합가입 -->
 </map>
 	<script>
 		function htmlMove1() {

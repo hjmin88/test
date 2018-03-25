@@ -23,11 +23,11 @@
 </head>
 
 <body onload="chk_sT2();">
-	<p class="crop"><img src="t2-separate-main.png" usemap="#link" /></p>
+	<p class="crop"><img id="imgID" src="t2-separate-main.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="155,229,611,734" onclick="htmlMove1()" /> <!-- 브릿지 공통 -->
-	<area shape="rect" coords="656,229,1110,734" onclick="htmlMove2()" /> <!-- 브릿지 일반 -->
+	<area shape="rect" coords="155,229,611,734" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 브릿지 공통 -->
+	<area shape="rect" coords="656,229,1110,734" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 브릿지 일반 -->
 </map>
 <script>
 	function chk_sT2() {
