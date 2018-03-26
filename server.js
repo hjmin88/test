@@ -1,16 +1,19 @@
 var http = require('http');
-
 var url = require('url');
 var querystring = require('querystring');
+var fs = require('fs');
+var path = require('path');
 
 var server = http.createServer(function(request, response) {
+  response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
   console.log('--- log start ---');
   //브라우저에서 요청한 주소를 parsing 하여 객체화 후 출력
   var parsedUrl = url.parse(request.url);
-  console.log(parsedUrl);
+  console.log('parsedUrl:' + JSON.stringify(parsedUrl));
+  //console.log('parsedUrl:' + JSON.stringify(parsedUrl));
   //객체화된 url 중에 Query String 부분만 따로 객체화 후 출력
   var parsedQuery = querystring.parse(parsedUrl.query, '&', '=');
-  console.log(parsedQuery);
+  console.log('parsedQuery:' + JSON.stringify(parsedQuery));
   console.log('--- log end ---');
 
   //parsing 된 url 중에 서버URI에 해당하는 pathname 만 따로 저장
@@ -23,8 +26,6 @@ var server = http.createServer(function(request, response) {
     response.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8;'
     });
-
-    var fs = require('fs');
 
     var timestamp = + new Date();
     var data = "sa_" + timestamp + ".txt" + "|" + parsedQuery.svI1 + "|" +
@@ -50,7 +51,33 @@ var server = http.createServer(function(request, response) {
         //파일생성 중 오류가 없으면 완료 문자열 출력
         console.log('WRITE DONE! sa_' + timestamp + '.txt');
       }
+      response.write('------------------------');
+      response.end();
     });
+  } else if (resource == '/survey-query-count.html') {
+      var dataFolderPath = path.join(__dirname, 'data');
+      //passsing directoryPath and callback function
+      fs.readdir(dataFolderPath, (err, files) => {
+          //handling error
+          if (err) {
+              return response.write('Unable to scan directory: ' + err);
+          } 
+          //listing all files using forEach
+          response.write('list of files -----------');
+          files.forEach( (fileName) => {
+              // Do whatever you want to do with the file
+              response.write(fileName); 
+              var fileContents = fs.readFileSync('./data/' + fileName, 'utf-8');
+              // wait for the result, then use it
+              response.write(':' + fileContents);
+              response.write('\n'); 
+          });
+          response.write('------------------------');
+          response.end();
+      });
+
+  } else if (resource == '/survey-download-csv.html') {
+    
   }
 });
 
