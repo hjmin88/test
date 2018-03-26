@@ -18,18 +18,31 @@ var server = http.createServer(function(request, response) {
   console.log('resource path=%s', resource);
 
   //리소스에 해당하는 문자열이 아래와 같은 경우
-  if (resource == '/survey.html') {
+  if (resource == '/survey-cmplt.html') {
 
     response.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8;'
     });
 
     var fs = require('fs');
-    var data = 'var1의 값은 ' + parsedQuery.var1
+
+    var timestamp = + new Date();
+    var data = "sa_" + timestamp + ".txt" + "|" + parsedQuery.svI1 + "|" +
+                parsedQuery.svI2 + "|" +
+                parsedQuery.svI3 + "|" +
+                parsedQuery.svI4 + "|" +
+                parsedQuery.svC1 + "|" +
+                parsedQuery.svC2 + "|" +
+                parsedQuery.svC3 + "|" +
+                parsedQuery.svC4 + "|" +
+                parsedQuery.svQ1 + "|" +
+                parsedQuery.svQ2 + "|" +
+                parsedQuery.svQ3 + "|" +
+                parsedQuery.svQ4;
 
     //비동기 방식으로 파일을 생성. 함수의 인자는 앞에서 부터 순서대로 파일명, 입력데이터, 인코딩, 콜백함수
-    var timestamp = +new Date();
-    fs.writeFile('sa_' + timestamp + '.txt', data, 'utf-8', function(e) {
+
+    fs.writeFile('./data/sa_' + timestamp + '.txt', data, 'utf-8', function(e) {
       if (e) {
         //파일생성 중 오류가 발생하면 오류출력
         console.log(e);

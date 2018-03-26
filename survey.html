@@ -39,7 +39,7 @@
 </head>
 
 <body onload="memChk();" id="center">
-	<form>
+	<form action="survey-cmplt.html" method="get">
 		<div>
 			<table border="1" cellpadding="10px">
 				<td style="padding-left:20px; padding-right:50px;">
@@ -50,12 +50,20 @@
 						[기본정보]
 						<span style="font-size:14px;">
 			<br /> 접수구분 : <span id="memType" style="color:blue;"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 접수유형 : <span id="siteType" style="color:blue;"></span>
+						<input type="hidden" id="svI1" name="svI1" value="" />
+						<input type="hidden" id="svI2" name="svI2" value="" />
 						</span>
 					</p>
 					<p>
 						[테스트결과]
 						<span style="font-size:14px;">
 			<br /> Step1 소요시간 : <span id="t1Time" style="color:blue;"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Step2 소요시간 : <span id="t2Time" style="color:blue;"></span>
+						<input type="hidden" id="svI3" name="svI3" value="" />
+						<input type="hidden" id="svI4" name="svI4" value="" />
+						<input type="hidden" id="svC1" name="svC1" value="" />
+						<input type="hidden" id="svC2" name="svC2" value="" />
+						<input type="hidden" id="svC3" name="svC3" value="" />
+						<input type="hidden" id="svC4" name="svC4" value="" />
 						</span>
 					</p>
 					<p>[설문조사]</p>
@@ -87,13 +95,21 @@
 						<input type="submit" value="제출하기" style="width:100px; height:40px; font-size:20px; font-weight:bold; color:blue;" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 테스트에 참여해주셔서
 						대단히 감사합니다.
 					</p>
+				</td>
+			</table>
 		</div>
-		</td>
-		</table>
 	</form>
 
 	<script>
 		$(document).ready(function() {
+			$('#svI1').val(msg);
+			$('#svI2').val(msg2);
+			$('#svI3').val(t1Time);
+			$('#svI4').val(t2Time);
+			$('#svC1').val(j1C);
+			$('#svC2').val(j1E);
+			$('#svC3').val(j2C);
+			$('#svC4').val(j2E);
 			document.getElementById("t1Time").innerHTML = t1Time;
 			document.getElementById("t2Time").innerHTML = t2Time;
 		});
@@ -143,13 +159,13 @@
 		diffSecT1 = timeGapT1.getSeconds(); // 초
 
 		if (diffDayT1 > 0) {
-			t1Time = diffDayT1 + "일 " + diffHourT1 + "시간 " + diffMinT1 + "분 " + diffSecT1 + "초 ";
+			t1Time = diffDayT1 + "일 " + diffHourT1 + "시간 " + diffMinT1 + "분 " + diffSecT1 + "초";
 		} else if (diffHourT1 > 0) {
-			t1Time = diffHourT1 + "시간 " + diffMinT1 + "분 " + diffSecT1 + "초 ";
+			t1Time = diffHourT1 + "시간 " + diffMinT1 + "분 " + diffSecT1 + "초";
 		} else if (diffMinT1 > 0) {
-			t1Time = diffMinT1 + "분 " + diffSecT1 + "초 ";
+			t1Time = diffMinT1 + "분 " + diffSecT1 + "초";
 		} else if (diffSecT1 > 0) {
-			t1Time = diffSecT1 + "초 ";
+			t1Time = diffSecT1 + "초";
 		} else t1Time = "에러";
 		// t1Time 계산 끝
 
@@ -187,13 +203,13 @@
 		diffSecT2 = timeGapT2.getSeconds(); // 초
 
 		if (diffDayT2 > 0) {
-			t2Time = diffDayT2 + "일 " + diffHourT2 + "시간 " + diffMinT2 + "분 " + diffSecT2 + "초 ";
+			t2Time = diffDayT2 + "일 " + diffHourT2 + "시간 " + diffMinT2 + "분 " + diffSecT2 + "초";
 		} else if (diffHourT2 > 0) {
-			t2Time = diffHourT2 + "시간 " + diffMinT2 + "분 " + diffSecT2 + "초 ";
+			t2Time = diffHourT2 + "시간 " + diffMinT2 + "분 " + diffSecT2 + "초";
 		} else if (diffMinT2 > 0) {
-			t2Time = diffMinT2 + "분 " + diffSecT2 + "초 ";
+			t2Time = diffMinT2 + "분 " + diffSecT2 + "초";
 		} else if (diffSecT2 > 0) {
-			t2Time = diffSecT2 + "초 ";
+			t2Time = diffSecT2 + "초";
 		} else t2Time = "에러";
 	</script>
 </body>
