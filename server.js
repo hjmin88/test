@@ -51,7 +51,9 @@ var server = http.createServer(function(request, response) {
         //파일생성 중 오류가 없으면 완료 문자열 출력
         console.log('WRITE DONE! sa_' + timestamp + '.txt');
       }
-      response.write('------------------------');
+      response.writeHead(301,
+        {Location: 'http://ec2-13-125-207-14.ap-northeast-2.compute.amazonaws.com/survey-complt.html'}
+      );
       response.end();
     });
   } else if (resource == '/survey-query-count.html') {
@@ -61,23 +63,24 @@ var server = http.createServer(function(request, response) {
           //handling error
           if (err) {
               return response.write('Unable to scan directory: ' + err);
-          } 
+          }
           //listing all files using forEach
-          response.write('list of files -----------');
+          response.write('list of files --------------------');
+          response.write('\n');
           files.forEach( (fileName) => {
               // Do whatever you want to do with the file
-              response.write(fileName); 
+              response.write(fileName);
               var fileContents = fs.readFileSync('./data/' + fileName, 'utf-8');
               // wait for the result, then use it
               response.write(':' + fileContents);
-              response.write('\n'); 
+              response.write('\n');
           });
-          response.write('------------------------');
+          response.write('------------------------------');
           response.end();
       });
 
   } else if (resource == '/survey-download-csv.html') {
-    
+
   }
 });
 
