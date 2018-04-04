@@ -38,7 +38,7 @@
 	</style>
 </head>
 
-<body onload="memChk();" id="center">
+<body id="center">
 	<form action="http://ec2-13-125-207-14.ap-northeast-2.compute.amazonaws.com:8080/survey-cmplt.html" method="get">
 	<!-- form action="http://localhost:8080/survey-cmplt.html" method="get" -->
 		<div>
@@ -126,6 +126,7 @@
 	</form>
 
 	<script>
+		memChk();
 		$(document).ready(function() {
 			$('#svI1').val(msg);
 			$('#svI2').val(msg2);
