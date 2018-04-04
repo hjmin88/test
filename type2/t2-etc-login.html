@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Step2. 분리도메인</title>
+	<title>분리도메인 테스트페이지</title>
 	<script src="../jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="../control.js"></script>
 	<style type="text/css">
@@ -142,10 +142,23 @@
 				<div class="pop-conts">
 					<!--content //-->
 					<p class="ctxt mb20"><span style="font-size:15px; font-weight:bold;">테스트 완료!</span>
-						<br> 'Step2. 분리도메인' 테스트를 완료하였습니다.
-						<br> 아래 <span style="font-weight:bold; color:blue;">[다음]</span> 버튼을 클릭하시고
-						<span style="font-weight:bold; color:blue;">'설문조사'</span>를 작성하세요.<br><br> 테스트를 진행해주셔서 감사합니다!
+						<br /> <span id="txt1"></span> 테스트를 완료하였습니다.
+						<br /> 아래 <span style="font-weight:bold; color:blue;">[다음]</span> 버튼을 클릭하시고
+						<br /> <span style="font-weight:bold; color:blue;"><span id="txt2"></span></span><span id="txt3"></span><br /><br /> 테스트를 진행해주셔서 감사합니다!
 					</p>
+
+					<script>
+						if (odr == "1") {
+							document.getElementById('txt1').innerHTML = "'Step2. 분리도메인'";
+							document.getElementById('txt2').innerHTML = "'설문조사'";
+							document.getElementById('txt3').innerHTML = "를 작성하세요.";
+						}
+						if (odr == "2") {
+							document.getElementById('txt1').innerHTML = "'Step1. 분리도메인'";
+							document.getElementById('txt2').innerHTML = "'Step2. 통합도메인'";
+							document.getElementById('txt3').innerHTML = " 테스트를 진행하세요.";
+						}
+					</script>
 
 					<div class="btn-r">
 						<a href="#" class="btn-layerClose">다음</a>
@@ -178,19 +191,19 @@
 
 	<script>
 		function htmlMove1() {
-			location.href = "t2-etc-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+			location.href = "t2-etc-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}
 
 		function htmlMove2() {
-			location.href = "t2-etc-login.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+			location.href = "t2-etc-login.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}
 
 		function htmlMove3() {
-			location.href = "t2-etc-join-agree.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+			location.href = "t2-etc-join-agree.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}
 
 		function htmlMove4() {
-			location.href = "t2-etc-join-agree.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+			location.href = "t2-etc-join-agree.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}
 
 		function htmlMove5() {
@@ -202,10 +215,9 @@
 						// MMdd-hhmmss 11자리
 						layerPop();
 					}
-				} else location.href = "t2-etc-login-complete.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+				} else location.href = "t2-etc-login-complete.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 			} else layerPop2();
 		}
-
 	</script>
 </body>
 

@@ -1,5 +1,7 @@
 // 전역변수 선언
 var sel = '';
+var odr = '';
+
 var sT1 = '';
 var eT1 = '';
 var sT2 = '';
@@ -52,17 +54,12 @@ function memChk() {
     msg = "폴리텍(전문기술 등)";
   } else if (sel == 15) {
     msg = "기타";
-  } else msg = "ERROR";
+  } else {
+    msg = "ERROR";
+  }
   document.getElementById("memType").innerHTML = msg;
 
-  if (eT2 != "") {
-    if ((1 <= Number(sel)) && (Number(sel) <= 5)) {
-      msg2 = "공통원서";
-    } else {
-      msg2 = "일반원서";
-    }
-    document.getElementById("siteType").innerHTML = msg2;
-  } else return false;
+
 }
 
 // url get방식 parameters 출력
@@ -70,7 +67,13 @@ function moveIndex() {
   var f = document.getElementsByTagName('form')[0];
   if (f.checkValidity()) {
     var sel = $("input[name=selType]:checked").val();
-    location.href = "main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    var rd = Math.floor(Math.random() * 10) + 1;
+    if ((rd >= 1) && (rd <= 5)) {
+      odr = "1";
+    } else {
+      odr = "2";
+    }
+    location.href = "main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
   } else {
     layerPop2();
   }
@@ -84,6 +87,13 @@ if (address.indexOf("sel=", 0) != -1) {
   sel = sel.substring(0, sel.indexOf('&'));
 } else {
   sel = "";
+}
+
+if (address.indexOf("odr=", 0) != -1) {
+  odr = address.substring(address.indexOf("odr=", 0) + 4);
+  odr = odr.substring(0, odr.indexOf('&'));
+} else {
+  odr = "";
 }
 
 if (address.indexOf("sT1=", 0) != -1) {
@@ -144,45 +154,86 @@ if (address.indexOf("eT2=", 0) != -1) {
 
 function test1st() {
   var x = document.getElementById("chgStyle");
-  if (!eT1) {
-    location.href = "type1/t1-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
-  } else if (!eT2) {
-    notiMsg = "이미 완료하셨습니다. 'Step2. 분리도메인'을 진행해주세요.";
-    x.style.marginBottom = "10px";
-    document.getElementById("notiMsg").innerHTML = notiMsg;
-  } else {
-    notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
-    x.style.marginBottom = "10px";
-    document.getElementById("notiMsg").innerHTML = notiMsg;
-  }
+  if (odr == "1") {
+    if (!eT1) {
+      location.href = "type1/t1-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    } else if (!eT2) {
+      notiMsg = "이미 완료하셨습니다. 'Step2. 분리도메인'을 진행해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else {
+      notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    }
+  } else if (odr == "2") {
+    if (!eT2) {
+      location.href = "type2/t2-separate-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    } else if (!eT1) {
+      notiMsg = "이미 완료하셨습니다. 'Step2. 통합도메인'을 진행해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else {
+      notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    }
+  } else return false;
 }
 
 function test2nd() {
   var x = document.getElementById("chgStyle");
-  if (!eT1) {
-    notiMsg = "'Step1. 통합도메인'을 먼저 완료해주세요.";
-    x.style.marginBottom = "10px";
-    document.getElementById("notiMsg").innerHTML = notiMsg;
-  } else if (!eT2) {
-    location.href = "type2/t2-separate-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
-  } else {
-    notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
-    x.style.marginBottom = "10px";
-    document.getElementById("notiMsg").innerHTML = notiMsg;
-  }
+  if (odr == "1") {
+    if (!eT1) {
+      notiMsg = "'Step1. 통합도메인'을 먼저 완료해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else if (!eT2) {
+      location.href = "type2/t2-separate-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    } else {
+      notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    }
+  } else if (odr == "2") {
+
+    if (!eT2) {
+      notiMsg = "'Step1. 분리도메인'을 먼저 완료해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else if (!eT1) {
+      location.href = "type1/t1-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    } else {
+      notiMsg = "이미 완료하셨습니다. 'Step3. 설문조사'를 진행해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    }
+  } else return false;
 }
 
 function goSurvey() {
   var x = document.getElementById("chgStyle");
-  if (!eT1) {
-    notiMsg = "'Step1. 통합도메인'을 먼저 완료해주세요.";
-    x.style.marginBottom = "10px";
-    document.getElementById("notiMsg").innerHTML = notiMsg;
-  } else if (!eT2) {
-    notiMsg = "'Step2. 분리도메인'을 먼저 완료해주세요.";
-    x.style.marginBottom = "10px";
-    document.getElementById("notiMsg").innerHTML = notiMsg;
-  } else location.href = "survey.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  if (odr == "1") {
+    if (!eT1) {
+      notiMsg = "'Step1. 통합도메인'을 먼저 완료해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else if (!eT2) {
+      notiMsg = "'Step2. 분리도메인'을 먼저 완료해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else location.href = "survey.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  } else if (odr == "2") {
+    if (!eT2) {
+      notiMsg = "'Step1. 분리도메인'을 먼저 완료해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else if (!eT1) {
+      notiMsg = "'Step2. 통합도메인'을 먼저 완료해주세요.";
+      x.style.marginBottom = "10px";
+      document.getElementById("notiMsg").innerHTML = notiMsg;
+    } else location.href = "survey.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+  }
 }
 
 // 레이어 관련 스크립트
@@ -218,7 +269,7 @@ function layer_popup(el) {
 
   $el.find('a.btn-layerClose').click(function() {
     $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-    location.href = "../main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    location.href = "../main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
     return false;
   });
 
@@ -235,7 +286,7 @@ function layer_popup(el) {
 
   $el.find('a.btn-layerClose4').click(function() {
     $('.dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-    location.href = "t2-separate-main.html?sel=" + sel + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
+    location.href = "t2-separate-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
     return false;
   });
 

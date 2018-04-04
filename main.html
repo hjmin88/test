@@ -32,10 +32,20 @@
 		<p id="chgStyle">진학사 원서접수<br/><span style="font-size:40px;">_사이트 유저테스트</span>
 			<br /><span style="font-size:20px;">UserType : </span><span style="font-size:30px; color:blue;" id="memType"></span></p>
 		<p style="margin-top:10px; margin-bottom:20px;"><span style="font-size:20px; color:red;" id="notiMsg"></span></p>
-		<p style="margin-top:20px; margin-bottom:20px;"><input type="button" onclick="test1st();" value="Step1. 통합도메인" / style="width:400px; height:80px; font-size:30px;"></p>
-		<p style="margin-top:20px; margin-bottom:20px;"><input type="button" onclick="test2nd();" value="Step2. 분리도메인" / style="width:400px; height:80px; font-size:30px;"></p>
+		<p style="margin-top:20px; margin-bottom:20px;"><input id="btn1" type="button" onclick="test1st();" value="" / style="width:400px; height:80px; font-size:30px;"></p>
+		<p style="margin-top:20px; margin-bottom:20px;"><input id="btn2" type="button" onclick="test2nd();" value="" / style="width:400px; height:80px; font-size:30px;"></p>
 		<p style="margin-top:20px; margin-bottom:20px;"><input type="button" onclick="goSurvey();" value="Step3. 설문조사   " / style="width:400px; height:80px; font-size:30px;"></p>
 	</div>
+
+	<script>
+		if (odr == "1") {
+			document.getElementById("btn1").value = "Step1. 통합도메인";
+			document.getElementById("btn2").value = "Step2. 분리도메인";
+		} else if (odr == "2") {
+			document.getElementById("btn1").value = "Step1. 분리도메인";
+			document.getElementById("btn2").value = "Step2. 통합도메인";
+		}
+	</script>
 </body>
 
 </html>

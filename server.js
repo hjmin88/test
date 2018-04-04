@@ -5,7 +5,9 @@ var fs = require('fs');
 var path = require('path');
 
 var server = http.createServer(function(request, response) {
-  response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+  response.writeHead(200, {
+    'Content-Type': 'text/html; charset=utf-8'
+  });
   console.log('--- log start ---');
   //브라우저에서 요청한 주소를 parsing 하여 객체화 후 출력
   var parsedUrl = url.parse(request.url);
@@ -27,19 +29,21 @@ var server = http.createServer(function(request, response) {
       'Content-Type': 'text/html; charset=utf-8;'
     });
 
-    var timestamp = + new Date();
-    var data = "sa_" + timestamp + ".txt" + "|" + parsedQuery.svI1 + "|" +
-                parsedQuery.svI2 + "|" +
-                parsedQuery.svI3 + "|" +
-                parsedQuery.svI4 + "|" +
-                parsedQuery.svC1 + "|" +
-                parsedQuery.svC2 + "|" +
-                parsedQuery.svC3 + "|" +
-                parsedQuery.svC4 + "|" +
-                parsedQuery.svQ1 + "|" +
-                parsedQuery.svQ2 + "|" +
-                parsedQuery.svQ3 + "|" +
-                parsedQuery.svQ4;
+    var timestamp = +new Date();
+    var data = "sa_" + timestamp + ".txt" + "|" +
+      parsedQuery.svI1 + "|" +
+      parsedQuery.svI2 + "|" +
+      parsedQuery.svI3 + "|" +
+      parsedQuery.svI4 + "|" +
+      parsedQuery.svI5 + "|" +
+      parsedQuery.svC1 + "|" +
+      parsedQuery.svC2 + "|" +
+      parsedQuery.svC3 + "|" +
+      parsedQuery.svC4 + "|" +
+      parsedQuery.svQ1 + "|" +
+      parsedQuery.svQ2 + "|" +
+      parsedQuery.svQ3 + "|" +
+      parsedQuery.svQ4;
 
     //비동기 방식으로 파일을 생성. 함수의 인자는 앞에서 부터 순서대로 파일명, 입력데이터, 인코딩, 콜백함수
 
@@ -52,32 +56,35 @@ var server = http.createServer(function(request, response) {
         console.log('WRITE DONE! sa_' + timestamp + '.txt');
       }
       response.writeHead(301,
-        {Location: 'http://ec2-13-125-207-14.ap-northeast-2.compute.amazonaws.com/survey-complt.html'}
+        {Location: 'http://ec2-13-125-207-14.ap-northeast-2.compute.amazonaws.com:80/survey-cmplt.html'}
       );
+      /* response.write('------------------------'); */
       response.end();
     });
   } else if (resource == '/survey-query-count.html') {
-      var dataFolderPath = path.join(__dirname, 'data');
-      //passsing directoryPath and callback function
-      fs.readdir(dataFolderPath, (err, files) => {
-          //handling error
-          if (err) {
-              return response.write('Unable to scan directory: ' + err);
-          }
-          //listing all files using forEach
-          response.write('list of files --------------------');
-          response.write('\n');
-          files.forEach( (fileName) => {
-              // Do whatever you want to do with the file
-              response.write(fileName);
-              var fileContents = fs.readFileSync('./data/' + fileName, 'utf-8');
-              // wait for the result, then use it
-              response.write(':' + fileContents);
-              response.write('\n');
-          });
-          response.write('------------------------------');
-          response.end();
+    var dataFolderPath = path.join(__dirname, 'data');
+    //passsing directoryPath and callback function
+    fs.readdir(dataFolderPath, (err, files) => {
+      //handling error
+      if (err) {
+        return response.write('Unable to scan directory: ' + err);
+      }
+      //listing all files using forEach
+      response.write('list of files -----------');
+      response.write('<br />');
+      response.write('\n');
+      files.forEach((fileName) => {
+        // Do whatever you want to do with the file
+        response.write(fileName);
+        var fileContents = fs.readFileSync('./data/' + fileName, 'utf-8');
+        // wait for the result, then use it
+        response.write(':' + fileContents);
+        response.write('<br />');
+        response.write('\n');
       });
+      response.write('------------------------');
+      response.end();
+    });
 
   } else if (resource == '/survey-download-csv.html') {
 

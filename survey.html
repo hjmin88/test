@@ -39,7 +39,8 @@
 </head>
 
 <body onload="memChk();" id="center">
-	<form action="http://localhost:8080/survey-cmplt.html" method="get">
+	<form action="http://ec2-13-125-207-14.ap-northeast-2.compute.amazonaws.com:8080/survey-cmplt.html" method="get">
+	<!-- form action="http://localhost:8080/survey-cmplt.html" method="get" -->
 		<div>
 			<table border="1" cellpadding="10px">
 				<td style="padding-left:20px; padding-right:50px;">
@@ -53,6 +54,15 @@
 						<input type="hidden" id="svI1" name="svI1" value="" />
 						<input type="hidden" id="svI2" name="svI2" value="" />
 						</span>
+
+						<script>
+							if ((1 <= Number(sel)) && (Number(sel) <= 5)) {
+								msg2 = "공통원서";
+							} else {
+								msg2 = "일반원서";
+							}
+							document.getElementById("siteType").innerHTML = msg2;
+						</script>
 					</p>
 					<p>
 						[테스트결과]
@@ -60,6 +70,7 @@
 			<br /> Step1 소요시간 : <span id="t1Time" style="color:blue;"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Step2 소요시간 : <span id="t2Time" style="color:blue;"></span>
 						<input type="hidden" id="svI3" name="svI3" value="" />
 						<input type="hidden" id="svI4" name="svI4" value="" />
+						<input type="hidden" id="svI5" name="svI5" value="" />
 						<input type="hidden" id="svC1" name="svC1" value="" />
 						<input type="hidden" id="svC2" name="svC2" value="" />
 						<input type="hidden" id="svC3" name="svC3" value="" />
@@ -69,9 +80,23 @@
 					<p>[설문조사]</p>
 					<p>
 						<h4>1. Step1과 Step2 중 어느 것이 가입 후 로그인 하기까지 더 수월했습니까?</h4>
-						<label><input type="radio" id="svQ11" name="svQ1" value="1" required /> Step1 - 통합사이트</label><br />
-						<label><input type="radio" id="svQ12" name="svQ1" value="2" /> Step2 - 분리사이트</label><br />
-						<label><input type="radio" id="svQ13" name="svQ1" value="0" /> 비슷비슷하다(잘 모르겠다)</label>
+						<label><input type="radio" id="svQ11" name="svQ1" value="" required /> <span id="txt1"></span></label><br />
+						<label><input type="radio" id="svQ12" name="svQ1" value="" /> <span id="txt2"></span></label><br />
+						<label><input type="radio" id="svQ13" name="svQ1" value="3" /> 비슷비슷하다(잘 모르겠다)</label>
+						<script>
+							if (odr == "1") {
+								document.getElementById('txt1').innerHTML = "Step1 - 통합사이트";
+								document.getElementById('svQ11').value = "1"
+								document.getElementById('txt2').innerHTML = "Step2 - 분리사이트";
+								document.getElementById('svQ12').value = "2"
+							} else if (odr == "2") {
+								document.getElementById('txt1').innerHTML = "Step1 - 분리사이트";
+								document.getElementById('svQ11').value = "2"
+								document.getElementById('txt2').innerHTML = "Step2 - 통합사이트";
+								document.getElementById('svQ12').value = "1"
+							}
+						</script>
+
 					</p>
 					<p>
 						<h4>2. 위와 같이 응답한 이유는 무엇입니까? (주관식)</h4>
@@ -92,10 +117,7 @@
 						<label><input type="radio" id="svQ46" name="svQ4" value="6" /> 60대 이상</label>
 					</p>
 					<p style="padding-top:10px;">
-						<input type="submit" value="제출하기" 
-						style="width:100px; height:40px; font-size:20px; font-weight:bold; color:blue;" /> 
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-						테스트에 참여해주셔서
+						<input type="submit" value="제출하기" style="width:100px; height:40px; font-size:20px; font-weight:bold; color:blue;" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 테스트에 참여해주셔서
 						대단히 감사합니다.
 					</p>
 				</td>
@@ -107,14 +129,26 @@
 		$(document).ready(function() {
 			$('#svI1').val(msg);
 			$('#svI2').val(msg2);
-			$('#svI3').val(t1Time);
-			$('#svI4').val(t2Time);
-			$('#svC1').val(j1C);
-			$('#svC2').val(j1E);
-			$('#svC3').val(j2C);
-			$('#svC4').val(j2E);
-			document.getElementById("t1Time").innerHTML = t1Time;
-			document.getElementById("t2Time").innerHTML = t2Time;
+			var odrTxt;
+			if (odr == "1") {
+				odrTxt = "통합먼저";
+			} else if (odr == "2") {
+				odrTxt = "분리먼저";
+				$('#svI3').val(odrTxt);
+				$('#svI4').val(t1Time);
+				$('#svI5').val(t2Time);
+				$('#svC1').val(j1C);
+				$('#svC2').val(j1E);
+				$('#svC3').val(j2C);
+				$('#svC4').val(j2E);
+				if (odr == "1") {
+					document.getElementById("t1Time").innerHTML = t1Time;
+					document.getElementById("t2Time").innerHTML = t2Time;
+				} else if (odr == "2") {
+					document.getElementById("t1Time").innerHTML = t2Time;
+					document.getElementById("t2Time").innerHTML = t1Time;
+				}
+			}
 		});
 
 		var t1Time;
