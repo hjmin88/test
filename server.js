@@ -29,9 +29,8 @@ var server = http.createServer(function(request, response) {
       'Content-Type': 'text/html; charset=utf-8;'
     });
 
-    var timestamp = +new Date();
-    var data = "sa_" + timestamp + ".txt" + "|" +
-      parsedQuery.svI1 + "|" +
+    var timestamp = + new Date();
+    var data = parsedQuery.svI1 + "|" +
       parsedQuery.svI2 + "|" +
       parsedQuery.svI3 + "|" +
       parsedQuery.svI4 + "|" +
@@ -78,7 +77,7 @@ var server = http.createServer(function(request, response) {
         response.write(fileName);
         var fileContents = fs.readFileSync('./data/' + fileName, 'utf-8');
         // wait for the result, then use it
-        response.write(':' + fileContents);
+        response.write('|' + fileContents);
         response.write('<br />');
         response.write('\n');
       });
