@@ -40,7 +40,7 @@
 
 <body id="center">
 	<form action="http://ec2-13-125-207-14.ap-northeast-2.compute.amazonaws.com:8080/survey-cmplt.html" method="get">
-	<!-- form action="http://localhost:8080/survey-cmplt.html" method="get" -->
+		<!-- form action="http://localhost:8080/survey-cmplt.html" method="get" -->
 		<div>
 			<table border="1" cellpadding="10px">
 				<td style="padding-left:20px; padding-right:50px;">
@@ -133,23 +133,20 @@
 			var odrTxt;
 			if (odr == "1") {
 				odrTxt = "통합먼저";
+				document.getElementById("t1Time").innerHTML = t1Time;
+				document.getElementById("t2Time").innerHTML = t2Time;
 			} else if (odr == "2") {
 				odrTxt = "분리먼저";
-				$('#svI3').val(odrTxt);
-				$('#svI4').val(t1Time);
-				$('#svI5').val(t2Time);
-				$('#svC1').val(j1C);
-				$('#svC2').val(j1E);
-				$('#svC3').val(j2C);
-				$('#svC4').val(j2E);
-				if (odr == "1") {
-					document.getElementById("t1Time").innerHTML = t1Time;
-					document.getElementById("t2Time").innerHTML = t2Time;
-				} else if (odr == "2") {
-					document.getElementById("t1Time").innerHTML = t2Time;
-					document.getElementById("t2Time").innerHTML = t1Time;
-				}
+				document.getElementById("t1Time").innerHTML = t2Time;
+				document.getElementById("t2Time").innerHTML = t1Time;
 			}
+			$('#svI3').val(odrTxt);
+			$('#svI4').val(t1Time);
+			$('#svI5').val(t2Time);
+			$('#svC1').val(j1C);
+			$('#svC2').val(j1E);
+			$('#svC3').val(j2C);
+			$('#svC4').val(j2E);
 		});
 
 		var t1Time;
