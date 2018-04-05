@@ -69,7 +69,7 @@ var server = http.createServer(function(request, response) {
         return response.write('Unable to scan directory: ' + err);
       }
       //listing all files using forEach
-      response.write('list of files -----------');
+      response.write('list of files ----------------------------------------');
       response.write('<br />');
       response.write('\n');
       files.forEach((fileName) => {
@@ -81,7 +81,7 @@ var server = http.createServer(function(request, response) {
         response.write('<br />');
         response.write('\n');
       });
-      response.write('------------------------');
+      response.write('------------------------------------------------------');
       response.end();
     });
 
