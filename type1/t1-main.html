@@ -26,10 +26,16 @@
 	<p class="crop"><img id="imgID" src="t1-main.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="777,115,819,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 메인 로그인 -->
-	<area shape="rect" coords="826,115,876,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 메인 회원가입 -->
+	<area class="area" shape="rect" coords="777,115,819,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 메인 로그인 -->
+	<area class="area" shape="rect" coords="826,115,876,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 메인 회원가입 -->
 </map>
 	<script>
+		$('html').click(function(e) {
+			if (!$(e.target).hasClass("area")) {
+				alert('회원가입/로그인 기능만 구현되어 있는 테스트 페이지입니다.');
+			}
+		});
+
 		function chk_sT1() {
 			if (!sT1) {
 				var t = new Date();
