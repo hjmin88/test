@@ -127,12 +127,12 @@
 	<p class="crop"><img id="imgID" src="login/t1-login-etc-select.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
-	<area shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
-	<area shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
-	<area shape="rect" coords="298,431,566,491" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 공통로그인 -->
-	<area shape="rect" coords="540,640,620,714" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 일반로그인 /로그인2 -->
-	<area shape="rect" coords="343,606,395,629" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove6()" /> <!-- 일반회원가입 -->
+	<area class="area" shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
+	<area class="area" shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
+	<area class="area" shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
+	<area class="area" shape="rect" coords="298,431,566,491" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 공통로그인 -->
+	<area class="area" shape="rect" coords="540,640,620,714" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 일반로그인 /로그인2 -->
+	<area class="area" shape="rect" coords="343,606,395,629" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove6()" /> <!-- 일반회원가입 -->
 </map>
 
 	<!-- 다음단계 레이어 팝업 -->
@@ -191,6 +191,12 @@
 	<!-- 레이어팝업 끝 -->
 
 	<script>
+		$('html').click(function(e) {
+			if (!$(e.target).hasClass("area")) {
+				alert('회원가입 또는 로그인을 진행해주세요.');
+			}
+		});
+
 		function htmlMove1() {
 			location.href = "t1-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}

@@ -101,7 +101,7 @@
 	<p class="crop"><img id="imgID" src="common/t2-common-login-complete.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="826,115,878,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 메인 로그아웃 -->
+	<area class="area" shape="rect" coords="826,115,878,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 메인 로그아웃 -->
 </map>
 
 	<!-- 경로안내 레이어 팝업 -->
@@ -129,6 +129,12 @@
 	<!-- 레이어팝업 끝 -->
 
 	<script>
+		$('html').click(function(e) {
+			if (!$(e.target).hasClass("area")) {
+				alert('회원가입 또는 로그인을 진행해주세요.');
+			}
+		});
+
 		function chkPath() {
 			memChk();
 			if ((6 <= Number(sel)) && (Number(sel) <= 15)) {

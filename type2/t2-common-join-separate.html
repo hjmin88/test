@@ -26,13 +26,19 @@
 	<p class="crop"><img id="imgID" src="common/t2-common-join-separate.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
-	<area shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
-	<area shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
-	<area shape="circle" coords="350,566,115" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 공통가입 분기 진학가입 -->
-	<area shape="circle" coords="640,560,140" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 공통가입 분기 통합가입 -->
+	<area class="area" shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
+	<area class="area" shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
+	<area class="area" shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
+	<area class="area" shape="circle" coords="350,566,115" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 공통가입 분기 진학가입 -->
+	<area class="area" shape="circle" coords="640,560,140" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 공통가입 분기 통합가입 -->
 </map>
 	<script>
+		$('html').click(function(e) {
+			if (!$(e.target).hasClass("area")) {
+				alert('회원가입 또는 로그인을 진행해주세요.');
+			}
+		});
+
 		function htmlMove1() {
 			location.href = "t2-common-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}

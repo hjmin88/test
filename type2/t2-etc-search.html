@@ -26,11 +26,17 @@
 	<p class="crop"><img id="imgID" src="etc/t2-etc-search.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="158,109,473,148" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- t2 일반 메인 상단 BI -->
-	<area shape="rect" coords="1040,100,1094,151" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- t2 일반 메인 원서검색(검색창) -->
-	<area shape="rect" coords="256,201,368,260" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- t2 일반 메인 원서검색(메뉴) -->
+	<area class="area" shape="rect" coords="158,109,473,148" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- t2 일반 메인 상단 BI -->
+	<area class="area" shape="rect" coords="1040,100,1094,151" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- t2 일반 메인 원서검색(검색창) -->
+	<area class="area" shape="rect" coords="256,201,368,260" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- t2 일반 메인 원서검색(메뉴) -->
 </map>
 	<script>
+		$('html').click(function(e) {
+			if (!$(e.target).hasClass("area")) {
+				alert('회원가입 또는 로그인을 진행해주세요.');
+			}
+		});
+
 		function htmlMove1() {
 			location.href = "t2-etc-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}

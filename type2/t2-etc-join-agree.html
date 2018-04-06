@@ -26,13 +26,19 @@
 	<p class="crop"><img id="imgID" src="etc/t2-etc-join-agree.png" usemap="#link" /></p>
 
 	<map name="link">
-	<area shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
-	<area shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
-	<area shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
-	<area shape="rect" coords="287,823,635,914" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 하단 동의안함 -->
-	<area shape="rect" coords="644,823,991,914" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 하단 동의 -->
+	<area class="area" shape="rect" coords="177,115,370,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove1()" /> <!-- 서브 BI -->
+	<area class="area" shape="rect" coords="954,115,995,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove2()" /> <!-- 서브 상단 로그인 -->
+	<area class="area" shape="rect" coords="1003,115,1053,137" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove3()" /> <!-- 서브 상단 회원가입 -->
+	<area class="area" shape="rect" coords="287,823,635,914" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove4()" /> <!-- 하단 동의안함 -->
+	<area class="area" shape="rect" coords="644,823,991,914" onMouseOver="imgID.style.cursor='pointer'" onMouseOut="imgID.style.cursor='auto'" onclick="htmlMove5()" /> <!-- 하단 동의 -->
 </map>
 	<script>
+		$('html').click(function(e) {
+			if (!$(e.target).hasClass("area")) {
+				alert('회원가입 또는 로그인을 진행해주세요.');
+			}
+		});
+
 		function htmlMove1() {
 			location.href = "t2-etc-main.html?sel=" + sel + "&odr=" + odr + "&sT1=" + sT1 + "&j1C=" + j1C + "&j1E=" + j1E + "&eT1=" + eT1 + "&sT2=" + sT2 + "&j2C=" + j2C + "&j2E=" + j2E + "&eT2=" + eT2;
 		}
